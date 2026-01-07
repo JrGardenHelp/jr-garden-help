@@ -18,8 +18,8 @@ function loadLanguage(lang) {
       hero_p: "I help your garden thrive – weed removal, lawn mowing, grass cutting, hedge cutting, garden fence & shed painting & more.",
       hero_btn: "Get a Quote",
       services_h2: "My Services",
-      service_1: "Lawn Mowing & Edging", service_2: "Hedge Trimming",
-      service_3: "Garden & Shed Painting", service_4: "Grass Cutting", service_5: "Weed Control"
+      service_1: "Lawn Mowing & Edging", service_2: "Garden & Shed Painting",
+      service_3: "Hedge Trimming", service_4: "Weed Control", service_5: "Grass Cutting"
       about_h2: "About JR Garden Help",
       about_p: "Run by Jonathan Rainey since 2025. Based in Dumbarton, serving Dumbarton, West Dunbartonshire and Neighbouring Council Areas.",
       contact_h2: "Contact Me",
