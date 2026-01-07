@@ -50,11 +50,12 @@ function updateText(map) {
   document.querySelector('#hero p').textContent = map.hero_p;
   document.querySelector('#hero .btn').textContent = map.hero_btn;
 
-  document.querySelector('#services h2').textContent = map.services_h2;
-  document.querySelectorAll('#services .card')[0].textContent = map.service_1;
-  document.querySelectorAll('#services .card')[1].textContent = map.service_2;
-  document.querySelectorAll('#services .card')[2].textContent = map.service_3;
-  document.querySelectorAll('#services .card')[3].textContent = map.service_4;
+ // Services cards – using data-key for flexibility
+document.querySelector('.card[data-key="lawn"]').textContent = map.lawn || 'Lawn Mowing & Edging';
+document.querySelector('.card[data-key="fence"]').textContent = map.fence || 'Fence Painting';
+document.querySelector('.card[data-key="hedge"]').textContent = map.hedge || 'Hedge Trimming';
+document.querySelector('.card[data-key="weed"]').textContent = map.weed || 'Weed Control';
+document.querySelector('.card[data-key="grass"]').textContent = map.grass || 'Grass Cutting';
 
   document.querySelector('#about h2').textContent = map.about_h2;
   document.querySelector('#about p').textContent = map.about_p;
