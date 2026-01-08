@@ -7,7 +7,7 @@ document.getElementById('lang-toggle').addEventListener('click', () => {
   document.getElementById('lang-toggle').textContent = currentLang === 'en' ? 'Gàidhlig (Scottish Gaelic)' : 'Beurla (English)';
 });
 
-function loadLanguage(lang) {
+unction loadLanguage(lang) {
   if (lang === 'en') {
     document.documentElement.lang = 'en';
     document.title = "JR Garden Help – Gardening Services in Scotland";
@@ -35,6 +35,7 @@ function loadLanguage(lang) {
       form_button: "Send",
       footer: "© 2025 JR Garden Help – All rights reserved."
     });
+    document.getElementById('lang-toggle').textContent = 'Gàidhlig (Scottish Gaelic)';
   } else {
     fetch('gaelic.json?t=' + new Date().getTime())
       .then(r => r.json())
@@ -42,6 +43,7 @@ function loadLanguage(lang) {
         document.documentElement.lang = 'gd';
         document.title = data.title;
         updateText(data);
+        document.getElementById('lang-toggle').textContent = 'Beurla (English)';
       });
   }
 }
