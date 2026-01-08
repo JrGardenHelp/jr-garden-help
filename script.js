@@ -73,10 +73,10 @@ function updateText(map) {
   document.querySelector('#contact h2').textContent = map.contact_h2;
   document.querySelector('#contact p').innerHTML = map.contact_p;
 
-  document.querySelector('form input[placeholder="Your Name"]').placeholder = map.form_name;
-  document.querySelector('form input[type="email"]').placeholder = map.form_email;
-  document.querySelector('form textarea').placeholder = map.form_message;
-  document.querySelector('form button').textContent = map.form_button;
+document.getElementById('name-input').placeholder = map.form_name;
+document.getElementById('email-input').placeholder = map.form_email;
+document.getElementById('message-textarea').placeholder = map.form_message;
+document.getElementById('submit-button').textContent = map.form_button;
 
   document.querySelector('footer p').innerHTML = map.footer;
 }
