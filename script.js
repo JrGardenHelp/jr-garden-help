@@ -36,7 +36,7 @@ function loadLanguage(lang) {
       footer: "© 2025 JR Garden Help – All rights reserved."
     });
   } else {
-    fetch('gaelic.json')
+    fetch('gaelic.json?t=' + new Date().getTime())
       .then(r => r.json())
       .then(data => {
         document.documentElement.lang = 'gd';
