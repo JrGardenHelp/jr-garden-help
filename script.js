@@ -7,7 +7,7 @@ document.getElementById('lang-toggle').addEventListener('click', () => {
   document.getElementById('lang-toggle').textContent = currentLang === 'en' ? 'Gàidhlig (Scottish Gaelic)' : 'Beurla (English)';
 });
 
-unction loadLanguage(lang) {
+function loadLanguage(lang) {
   if (lang === 'en') {
     document.documentElement.lang = 'en';
     document.title = "JR Garden Help – Gardening Services in Scotland";
@@ -35,7 +35,6 @@ unction loadLanguage(lang) {
       form_button: "Send",
       footer: "© 2025 JR Garden Help – All rights reserved."
     });
-    document.getElementById('lang-toggle').textContent = 'Gàidhlig (Scottish Gaelic)';
   } else {
     fetch('gaelic.json?t=' + new Date().getTime())
       .then(r => r.json())
@@ -43,7 +42,6 @@ unction loadLanguage(lang) {
         document.documentElement.lang = 'gd';
         document.title = data.title;
         updateText(data);
-        document.getElementById('lang-toggle').textContent = 'Beurla (English)';
       });
   }
 }
@@ -83,5 +81,8 @@ document.getElementById('submit-button').textContent = map.form_button;
   document.querySelector('footer p').innerHTML = map.footer;
 }
 
-// Load English on start
-loadLanguage('en');
+// Load English on start and set button text once DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  loadLanguage('en');
+  document.getElementById('lang-toggle').textContent = 'Gàidhlig (Scottish Gaelic)';
+});
