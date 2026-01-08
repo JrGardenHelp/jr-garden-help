@@ -13,7 +13,9 @@ function loadLanguage(lang) {
     document.title = "JR Garden Help – Gardening Services in Scotland";
     updateText({
       logo: "JR Garden Help",
-      nav_services: "Services", nav_about: "About", nav_contact: "Contact",
+      nav_services: "Services",
+      nav_about: "About",
+      nav_contact: "Contact",
       hero_h1: "Local Gardening in Dumbarton, West Dunbartonshire and Beyond.",
       hero_p: "I help your garden thrive – weed removal, lawn mowing, grass cutting, hedge cutting, garden fence & shed painting & more.",
       hero_btn: "Get a Quote",
@@ -22,12 +24,14 @@ function loadLanguage(lang) {
       service_2: "Garden & Shed Painting",
       service_3: "Hedge Trimming",
       service_4: "Weed Control",
-      service_5: "Grass Cutting"
+      service_5: "Grass Cutting",
       about_h2: "About JR Garden Help",
       about_p: "Run by Jonathan Rainey since 2025. Based in Dumbarton, serving Dumbarton, West Dunbartonshire and Neighbouring Council Areas.",
       contact_h2: "Contact Me",
       contact_p: "Email: jrgardenhelp@gmx.com<br>Phone: 07462 167433",
-      form_name: "Your Name", form_email: "Your Email", form_message: "Your Message",
+      form_name: "Your Name",
+      form_email: "Your Email",
+      form_message: "Your Message",
       form_button: "Send",
       footer: "© 2025 JR Garden Help – All rights reserved."
     });
@@ -53,12 +57,15 @@ function updateText(map) {
   document.querySelector('#hero p').textContent = map.hero_p;
   document.querySelector('#hero .btn').textContent = map.hero_btn;
 
- // Services cards – using data-key for flexibility
-document.querySelector('.card[data-key="lawn"]').textContent = map.lawn || 'Lawn Mowing & Edging';
-document.querySelector('.card[data-key="fence"]').textContent = map.fence || 'Fence Painting';
-document.querySelector('.card[data-key="hedge"]').textContent = map.hedge || 'Hedge Trimming';
-document.querySelector('.card[data-key="weed"]').textContent = map.weed || 'Weed Control';
-document.querySelector('.card[data-key="grass"]').textContent = map.grass || 'Grass Cutting';
+  document.querySelector('#services h2').textContent = map.services_h2;
+
+  // Services cards – numbered to match HTML order and JSON keys
+  const cards = document.querySelectorAll('#services .card');
+  if (cards[0]) cards[0].textContent = map.service_1 || 'Lawn Mowing & Edging';
+  if (cards[1]) cards[1].textContent = map.service_2 || 'Garden & Shed Painting';
+  if (cards[2]) cards[2].textContent = map.service_3 || 'Hedge Trimming';
+  if (cards[3]) cards[3].textContent = map.service_4 || 'Weed Control';
+  if (cards[4]) cards[4].textContent = map.service_5 || 'Grass Cutting';
 
   document.querySelector('#about h2').textContent = map.about_h2;
   document.querySelector('#about p').textContent = map.about_p;
