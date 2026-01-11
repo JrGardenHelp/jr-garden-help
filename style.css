@@ -22,3 +22,14 @@ form input, form textarea { padding:0.75rem; border:1px solid #ccc; border-radiu
 form button { background:#1a5f1a; color:white; padding:0.75rem; border:none; cursor:pointer; }
 
 footer { background:#1a5f1a; color:white; text-align:center; padding:1.5rem; }
+
+/* Hero logo styling */
+#hero-logo {
+  display: block;
+  max-width: 350px;               /* maximum size – change as needed */
+  width: 80%;                     /* makes it responsive on mobile */
+  height: auto;
+  margin: 2rem auto 1rem auto;    /* space above/below */
+  border-radius: 12px;            /* optional: soft corners */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* optional: nice shadow */
+}
