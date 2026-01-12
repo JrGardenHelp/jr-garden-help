@@ -17,7 +17,7 @@ function loadLanguage(lang) {
       nav_about: "About",
       nav_contact: "Contact",
       hero_h1: "Local Gardening in Dumbarton, West Dunbartonshire and Beyond.",
-      hero_p: "I help your garden thrive – weed removal, lawn mowing, grass cutting, hedge cutting, garden fence & shed painting & more.",
+      hero_p: "I help to keep your garden neat & tidy – weed removal, lawn mowing, grass cutting, hedge cutting, garden fence & shed painting and more.",
       hero_btn: "Get a Quote",
       services_h2: "My Services",
       service_1: "Lawn Mowing & Edging",
