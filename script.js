@@ -10,7 +10,7 @@ document.getElementById('lang-toggle').addEventListener('click', () => {
 function loadLanguage(lang) {
   if (lang === 'en') {
     document.documentElement.lang = 'en';
-    document.title = "JR Garden Help – Gardening Services in Scotland";
+    document.title = "JR Garden Help – Gardening Services in Dumbarton";
     updateText({
       logo: "JR Garden Help",
       nav_services: "Services",
