@@ -123,3 +123,7 @@ footer { background:#1a5f1a; color:white; text-align:center; padding:1.5rem; }
 .reviews-btn:hover {
   background: #f57c00;
 }
+nav a[href="reviews.html"] {
+  color: #ffeb3b; /* yellow to stand out */
+  font-weight: bold;
+}
