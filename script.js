@@ -95,6 +95,19 @@ function updateText(map) {
 
   document.querySelector('footer p').innerHTML = map.footer;
 
+  // Review form fields (only exist on reviews.html)
+const reviewName = document.getElementById('review-name-input');
+if (reviewName) reviewName.placeholder = map.form_name || 'Your Name';
+
+const reviewEmail = document.getElementById('review-email-input');
+if (reviewEmail) reviewEmail.placeholder = map.form_email || 'Your Email (optional)';
+
+const reviewText = document.getElementById('review-text-input');
+if (reviewText) reviewText.placeholder = map.form_message || 'Your Review / Feedback';
+
+const reviewSubmitBtn = document.getElementById('review-submit-btn');
+if (reviewSubmitBtn) reviewSubmitBtn.textContent = map.form_button || 'Submit Review';
+
   // Handle bilingual elements on any page (en-only / gd-only classes)
   document.querySelectorAll('.en-only').forEach(el => {
     el.style.display = (currentLang === 'en') ? 'block' : 'none';
