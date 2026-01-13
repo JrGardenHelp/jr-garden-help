@@ -47,19 +47,24 @@ function loadLanguage(lang) {
 }
 
 function updateText(map) {
-  // Update text nodes
+  // Update common text nodes
   document.querySelector('.logo').textContent = map.logo;
   document.querySelector('nav a[href="#services"]').textContent = map.nav_services;
   document.querySelector('nav a[href="#about"]').textContent = map.nav_about;
   document.querySelector('nav a[href="#contact"]').textContent = map.nav_contact;
 
-  document.querySelector('#hero h1').textContent = map.hero_h1;
-  document.querySelector('#hero p').textContent = map.hero_p;
-  document.querySelector('#hero .btn').textContent = map.hero_btn;
+  // Hero section (only exists on index.html)
+  const heroH1 = document.querySelector('#hero h1');
+  if (heroH1) heroH1.textContent = map.hero_h1;
+  const heroP = document.querySelector('#hero p');
+  if (heroP) heroP.textContent = map.hero_p;
+  const heroBtn = document.querySelector('#hero .btn');
+  if (heroBtn) heroBtn.textContent = map.hero_btn;
 
-  document.querySelector('#services h2').textContent = map.services_h2;
+  // Services section (only on index.html)
+  const servicesH2 = document.querySelector('#services h2');
+  if (servicesH2) servicesH2.textContent = map.services_h2;
 
-  // Services cards – numbered to match HTML order and JSON keys
   const cards = document.querySelectorAll('#services .card');
   if (cards[0]) cards[0].textContent = map.service_1 || 'Lawn Mowing & Edging';
   if (cards[1]) cards[1].textContent = map.service_2 || 'Garden & Shed Painting';
@@ -67,22 +72,39 @@ function updateText(map) {
   if (cards[3]) cards[3].textContent = map.service_4 || 'Weed Control';
   if (cards[4]) cards[4].textContent = map.service_5 || 'Grass Cutting';
 
+  // About section
   document.querySelector('#about h2').textContent = map.about_h2;
   document.querySelector('#about p').textContent = map.about_p;
 
+  // Contact section
   document.querySelector('#contact h2').textContent = map.contact_h2;
   document.querySelector('#contact p').innerHTML = map.contact_p;
 
-document.getElementById('name-input').placeholder = map.form_name;
-document.getElementById('email-input').placeholder = map.form_email;
-document.getElementById('message-textarea').placeholder = map.form_message;
-document.getElementById('submit-button').textContent = map.form_button;
+  // Form placeholders and button (using IDs)
+  const nameInput = document.getElementById('name-input');
+  if (nameInput) nameInput.placeholder = map.form_name;
+
+  const emailInput = document.getElementById('email-input');
+  if (emailInput) emailInput.placeholder = map.form_email;
+
+  const messageTextarea = document.getElementById('message-textarea');
+  if (messageTextarea) messageTextarea.placeholder = map.form_message;
+
+  const submitButton = document.getElementById('submit-button');
+  if (submitButton) submitButton.textContent = map.form_button;
 
   document.querySelector('footer p').innerHTML = map.footer;
+
+  // Handle bilingual elements on any page (en-only / gd-only classes)
+  document.querySelectorAll('.en-only').forEach(el => {
+    el.style.display = (currentLang === 'en') ? 'block' : 'none';
+  });
+  document.querySelectorAll('.gd-only').forEach(el => {
+    el.style.display = (currentLang === 'gd') ? 'block' : 'none';
+  });
 }
 
-// Load English on start and set button text once DOM is ready
+// Load English on start once DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   loadLanguage('en');
-  document.getElementById('lang-toggle').textContent = 'Gàidhlig (Scottish Gaelic)';
 });
