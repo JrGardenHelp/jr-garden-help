@@ -127,3 +127,14 @@ nav a[href="reviews.html"] {
   color: #ffeb3b; /* yellow to stand out */
   font-weight: bold;
 }
+.hero-btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;           /* space if you ever add more buttons */
+  flex-wrap: wrap;
+}
+
+.hero-btn-group .btn {
+  padding: 0.9rem 1.8rem; /* tighter horizontal padding */
+  white-space: nowrap;    /* keeps text on one line */
+}
