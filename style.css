@@ -114,3 +114,12 @@ footer { background:#1a5f1a; color:white; text-align:center; padding:1.5rem; }
 .review-submit button:hover {
   background: #145214;
 }
+.reviews-btn {
+  background: #ff9800;           /* orange to contrast with yellow quote button */
+  color: white;
+  margin-top: 1rem;
+}
+
+.reviews-btn:hover {
+  background: #f57c00;
+}
