@@ -138,3 +138,7 @@ nav a[href="reviews.html"] {
   padding: 0.9rem 1.8rem; /* tighter horizontal padding */
   white-space: nowrap;    /* keeps text on one line */
 }
+nav a:first-child {
+  font-weight: bold;
+  color: #ffeb3b; /* yellow to match your accent color */
+}
