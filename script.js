@@ -1,12 +1,14 @@
 const translations = {};
 let currentLang = 'en';
 
+// Language toggle click handler
 document.getElementById('lang-toggle').addEventListener('click', () => {
   currentLang = currentLang === 'en' ? 'gd' : 'en';
   loadLanguage(currentLang);
   document.getElementById('lang-toggle').textContent = currentLang === 'en' ? 'Gàidhlig (Scottish Gaelic)' : 'Beurla (English)';
 });
 
+// Load language function
 function loadLanguage(lang) {
   if (lang === 'en') {
     document.documentElement.lang = 'en';
@@ -40,30 +42,32 @@ function loadLanguage(lang) {
       .then(r => r.json())
       .then(data => {
         document.documentElement.lang = 'gd';
-        document.title = data.title;
+        document.title = data.title || "IÓR Gàrradh Cobhair – Seirbheisean Gàrraidh ann an Dùn Breatann";
         updateText(data);
-      });
+      })
+      .catch(err => console.error('Error loading Gaelic JSON:', err));
   }
 }
 
+// Main update function – runs on every language change
 function updateText(map) {
-  // Update common text nodes
-  document.querySelector('.logo').textContent = map.logo;
-  document.querySelector('nav a[href="#services"]').textContent = map.nav_services;
-  document.querySelector('nav a[href="#about"]').textContent = map.nav_about;
-  document.querySelector('nav a[href="#contact"]').textContent = map.nav_contact;
+  // Common elements
+  document.querySelector('.logo').textContent = map.logo || 'JR Garden Help';
+  document.querySelector('nav a[href="#services"]').textContent = map.nav_services || 'Services';
+  document.querySelector('nav a[href="#about"]').textContent = map.nav_about || 'About';
+  document.querySelector('nav a[href="#contact"]').textContent = map.nav_contact || 'Contact';
 
-  // Hero section (only exists on index.html)
+  // Hero section (index.html only)
   const heroH1 = document.querySelector('#hero h1');
-  if (heroH1) heroH1.textContent = map.hero_h1;
+  if (heroH1) heroH1.textContent = map.hero_h1 || '';
   const heroP = document.querySelector('#hero p');
-  if (heroP) heroP.textContent = map.hero_p;
+  if (heroP) heroP.textContent = map.hero_p || '';
   const heroBtn = document.querySelector('#hero .btn');
-  if (heroBtn) heroBtn.textContent = map.hero_btn;
+  if (heroBtn) heroBtn.textContent = map.hero_btn || 'Get a Quote';
 
-  // Services section (only on index.html)
+  // Services section (index.html only)
   const servicesH2 = document.querySelector('#services h2');
-  if (servicesH2) servicesH2.textContent = map.services_h2;
+  if (servicesH2) servicesH2.textContent = map.services_h2 || 'My Services';
 
   const cards = document.querySelectorAll('#services .card');
   if (cards[0]) cards[0].textContent = map.service_1 || 'Lawn Mowing & Edging';
@@ -73,42 +77,45 @@ function updateText(map) {
   if (cards[4]) cards[4].textContent = map.service_5 || 'Grass Cutting';
 
   // About section
-  document.querySelector('#about h2').textContent = map.about_h2;
-  document.querySelector('#about p').textContent = map.about_p;
+  const aboutH2 = document.querySelector('#about h2');
+  if (aboutH2) aboutH2.textContent = map.about_h2 || 'About JR Garden Help';
+  const aboutP = document.querySelector('#about p');
+  if (aboutP) aboutP.textContent = map.about_p || '';
 
   // Contact section
-  document.querySelector('#contact h2').textContent = map.contact_h2;
-  document.querySelector('#contact p').innerHTML = map.contact_p;
+  const contactH2 = document.querySelector('#contact h2');
+  if (contactH2) contactH2.textContent = map.contact_h2 || 'Contact Me';
+  const contactP = document.querySelector('#contact p');
+  if (contactP) contactP.innerHTML = map.contact_p || '';
 
-  // Form placeholders and button (using IDs)
+  // Main contact form (index.html)
   const nameInput = document.getElementById('name-input');
-  if (nameInput) nameInput.placeholder = map.form_name;
-
+  if (nameInput) nameInput.placeholder = map.form_name || 'Your Name';
   const emailInput = document.getElementById('email-input');
-  if (emailInput) emailInput.placeholder = map.form_email;
-
+  if (emailInput) emailInput.placeholder = map.form_email || 'Your Email';
   const messageTextarea = document.getElementById('message-textarea');
-  if (messageTextarea) messageTextarea.placeholder = map.form_message;
-
+  if (messageTextarea) messageTextarea.placeholder = map.form_message || 'Your Message';
   const submitButton = document.getElementById('submit-button');
-  if (submitButton) submitButton.textContent = map.form_button;
+  if (submitButton) submitButton.textContent = map.form_button || 'Send';
 
-  document.querySelector('footer p').innerHTML = map.footer;
+  // Review form (reviews.html)
+  const reviewNameInput = document.getElementById('review-name-input');
+  if (reviewNameInput) reviewNameInput.placeholder = map.form_name || 'Your Name';
 
-  // Review form fields (only exist on reviews.html)
-const reviewName = document.getElementById('review-name-input');
-if (reviewName) reviewName.placeholder = map.form_name || 'Your Name';
+  const reviewTextInput = document.getElementById('review-text-input');
+  if (reviewTextInput) reviewTextInput.placeholder = map.form_message || 'Your Review / Feedback';
 
-const reviewEmail = document.getElementById('review-email-input');
-if (reviewEmail) reviewEmail.placeholder = map.form_email || 'Your Email (optional)';
+  const reviewEmailInput = document.getElementById('review-email-input');
+  if (reviewEmailInput) reviewEmailInput.placeholder = map.form_email || 'Your Email';
 
-const reviewText = document.getElementById('review-text-input');
-if (reviewText) reviewText.placeholder = map.form_message || 'Your Review / Feedback';
+  const reviewSubmitBtn = document.getElementById('review-submit-btn');
+  if (reviewSubmitBtn) reviewSubmitBtn.textContent = map.form_button || 'Submit Review';
 
-const reviewSubmitBtn = document.getElementById('review-submit-btn');
-if (reviewSubmitBtn) reviewSubmitBtn.textContent = map.form_button || 'Submit Review';
+  // Footer
+  const footerP = document.querySelector('footer p');
+  if (footerP) footerP.innerHTML = map.footer || '© 2025 JR Garden Help – All rights reserved.';
 
-  // Handle bilingual elements on any page (en-only / gd-only classes)
+  // Show/hide elements with .en-only / .gd-only classes
   document.querySelectorAll('.en-only').forEach(el => {
     el.style.display = (currentLang === 'en') ? 'block' : 'none';
   });
@@ -117,7 +124,7 @@ if (reviewSubmitBtn) reviewSubmitBtn.textContent = map.form_button || 'Submit Re
   });
 }
 
-// Load English on start once DOM is ready
+// Load English on page load
 document.addEventListener('DOMContentLoaded', () => {
   loadLanguage('en');
 });
