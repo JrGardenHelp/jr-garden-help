@@ -47,30 +47,49 @@
       <h2 class="en-only">Submit Your Review</h2>
       <h2 class="gd-only">Cuir a-steach do Lèirmheas</h2>
 
-      <form action="https://formspree.io/f/mojjqlwk" method="POST">
-        <input type="text" id="review-name-input" name="name" placeholder="Your Name" required />
+     <form action="https://formspree.io/f/mojjqlwk" method="POST">
+  <!-- Name field with bilingual label -->
+  <label for="review-name-input" class="form-label">
+    <span class="en-only">Your Name</span>
+    <span class="gd-only">D’ Ainm</span>
+  </label>
+  <input type="text" id="review-name-input" name="name" placeholder="Your Name" required />
 
-        <div class="rating-group">
-          <label class="en-only">Rating:</label>
-          <label class="gd-only">Rangachadh:</label>
-          <select name="rating" required>
-            <option value="">— Select —</option>
-            <option value="5">⭐⭐⭐⭐⭐ (Excellent)</option>
-            <option value="4">⭐⭐⭐⭐ (Very Good)</option>
-            <option value="3">⭐⭐⭐ (Good)</option>
-            <option value="2">⭐⭐ (Fair)</option>
-            <option value="1">⭐ (Poor)</option>
-          </select>
-        </div>
+  <!-- Rating dropdown with bilingual label -->
+  <div class="rating-group">
+    <label class="form-label">
+      <span class="en-only">Rating</span>
+      <span class="gd-only">Rangachadh</span>
+    </label>
+    <select name="rating" required>
+      <option value="">— Select / Tagh —</option>
+      <option value="5">⭐⭐⭐⭐⭐ (Excellent / Sàr-mhath)</option>
+      <option value="4">⭐⭐⭐⭐ (Very Good / Glè mhath)</option>
+      <option value="3">⭐⭐⭐ (Good / Math)</option>
+      <option value="2">⭐⭐ (Fair / Cuibheasach)</option>
+      <option value="1">⭐ (Poor / Bochd)</option>
+    </select>
+  </div>
 
-        <textarea id="review-text-input" name="review" placeholder="Your Review / Feedback" rows="6" required></textarea>
+  <!-- Review text area with bilingual label -->
+  <label for="review-text-input" class="form-label">
+    <span class="en-only">Your Review / Feedback</span>
+    <span class="gd-only">Do Lèirmheas / Do Bheachd</span>
+  </label>
+  <textarea id="review-text-input" name="review" placeholder="Your Review / Feedback" rows="6" required></textarea>
 
-        <input type="email" id="review-email-input" name="_replyto" placeholder="Your Email (optional)" />
+  <!-- Email field with bilingual label (mandatory) -->
+  <label for="review-email-input" class="form-label">
+    <span class="en-only">Your Email</span>
+    <span class="gd-only">Do Phost-d</span>
+  </label>
+  <input type="email" id="review-email-input" name="_replyto" placeholder="Your Email" required />
 
-        <!-- Honeypot spam protection -->
-        <input type="text" name="_gotcha" style="display:none" />
+  <!-- Honeypot spam protection -->
+  <input type="text" name="_gotcha" style="display:none" />
 
-        <button type="submit" id="review-submit-btn">Submit Review</button>
+  <!-- Submit button – one button, text switches with toggle -->
+  <button type="submit" id="review-submit-btn">Submit Review</button>
       </form>
     </section>
 
@@ -104,5 +123,6 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
