@@ -130,4 +130,10 @@ function updateText(map) {
 // Initial load
 document.addEventListener('DOMContentLoaded', () => {
   loadLanguage('en');
+
+  // Force correct initial button text on EVERY page load
+  const toggleBtn = document.getElementById('lang-toggle');
+  if (toggleBtn) {
+    toggleBtn.textContent = 'Gàidhlig (Scottish Gaelic)';
+  }
 });
