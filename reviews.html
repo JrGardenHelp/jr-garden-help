@@ -10,21 +10,21 @@
 <body>
   <header>
     <div class="logo">JR Garden Help</div>
- <nav>
-  <a href="index.html" class="en-only">Home</a>
-  <a href="index.html" class="gd-only" style="display:none;">Dhachaigh</a>
+    <nav>
+      <a href="index.html" class="en-only">Home</a>
+      <a href="index.html" class="gd-only" style="display:none;">Dhachaigh</a>
 
-  <a href="index.html#services" class="en-only">Services</a>
-  <a href="index.html#services" class="gd-only" style="display:none;">Seirbheisean</a>
+      <a href="index.html#services" class="en-only">Services</a>
+      <a href="index.html#services" class="gd-only" style="display:none;">Seirbheisean</a>
 
-  <a href="index.html#about" class="en-only">About</a>
-  <a href="index.html#about" class="gd-only" style="display:none;">Mu Dheth</a>
+      <a href="index.html#about" class="en-only">About</a>
+      <a href="index.html#about" class="gd-only" style="display:none;">Mu Dheth</a>
 
-  <a href="index.html#contact" class="en-only">Contact</a>
-  <a href="index.html#contact" class="gd-only" style="display:none;">Fios</a>
+      <a href="index.html#contact" class="en-only">Contact</a>
+      <a href="index.html#contact" class="gd-only" style="display:none;">Fios</a>
 
-  <button id="lang-toggle">Gàidhlig (Scottish Gaelic)</button>
-</nav>
+      <button id="lang-toggle">Gàidhlig (Scottish Gaelic)</button>
+    </nav>
   </header>
 
   <main>
@@ -43,54 +43,61 @@
       <!-- You can paste .review-card blocks in this section later -->
     </section>
 
-    <!-- Review submission form -->
+    <!-- Review submission form with photo upload -->
     <section class="review-submit">
       <h2 class="en-only">Submit Your Review</h2>
       <h2 class="gd-only">Cuir a-steach do Lèirmheas</h2>
 
-     <form action="https://formspree.io/f/mojjqlwk" method="POST">
-  <!-- Name field with bilingual label -->
-  <label for="review-name-input" class="form-label">
-    <span class="en-only">Your Name</span>
-    <span class="gd-only">D’ Ainm</span>
-  </label>
-  <input type="text" id="review-name-input" name="name" placeholder="Your Name" required />
+      <form action="https://formspree.io/f/mojjqlwk" method="POST" enctype="multipart/form-data">
+        <!-- Name field with bilingual label -->
+        <label for="review-name-input" class="form-label">
+          <span class="en-only">Your Name</span>
+          <span class="gd-only">D’ Ainm</span>
+        </label>
+        <input type="text" id="review-name-input" name="name" placeholder="Your Name" required />
 
-  <!-- Rating dropdown with bilingual label -->
-  <div class="rating-group">
-    <label class="form-label">
-      <span class="en-only">Rating</span>
-      <span class="gd-only">Rangachadh</span>
-    </label>
-    <select name="rating" required>
-      <option value="">— Select / Tagh —</option>
-      <option value="5">⭐⭐⭐⭐⭐ (Excellent / Sàr-mhath)</option>
-      <option value="4">⭐⭐⭐⭐ (Very Good / Glè mhath)</option>
-      <option value="3">⭐⭐⭐ (Good / Math)</option>
-      <option value="2">⭐⭐ (Fair / Cuibheasach)</option>
-      <option value="1">⭐ (Poor / Bochd)</option>
-    </select>
-  </div>
+        <!-- Rating dropdown with bilingual label -->
+        <div class="rating-group">
+          <label class="form-label">
+            <span class="en-only">Rating</span>
+            <span class="gd-only">Rangachadh</span>
+          </label>
+          <select name="rating" required>
+            <option value="">— Select / Tagh —</option>
+            <option value="5">⭐⭐⭐⭐⭐ (Excellent / Sàr-mhath)</option>
+            <option value="4">⭐⭐⭐⭐ (Very Good / Glè mhath)</option>
+            <option value="3">⭐⭐⭐ (Good / Math)</option>
+            <option value="2">⭐⭐ (Fair / Cuibheasach)</option>
+            <option value="1">⭐ (Poor / Bochd)</option>
+          </select>
+        </div>
 
-  <!-- Review text area with bilingual label -->
-  <label for="review-text-input" class="form-label">
-    <span class="en-only">Your Review / Feedback</span>
-    <span class="gd-only">Do Lèirmheas / Do Bheachd</span>
-  </label>
-  <textarea id="review-text-input" name="review" placeholder="Your Review / Feedback" rows="6" required></textarea>
+        <!-- Review text area with bilingual label -->
+        <label for="review-text-input" class="form-label">
+          <span class="en-only">Your Review / Feedback</span>
+          <span class="gd-only">Do Lèirmheas / Do Bheachd</span>
+        </label>
+        <textarea id="review-text-input" name="review" placeholder="Your Review / Feedback" rows="6" required></textarea>
 
-  <!-- Email field with bilingual label (mandatory) -->
-  <label for="review-email-input" class="form-label">
-    <span class="en-only">Your Email</span>
-    <span class="gd-only">Do Phost-d</span>
-  </label>
-  <input type="email" id="review-email-input" name="_replyto" placeholder="Your Email" required />
+        <!-- Email field with bilingual label (mandatory) -->
+        <label for="review-email-input" class="form-label">
+          <span class="en-only">Your Email</span>
+          <span class="gd-only">Do Phost-d</span>
+        </label>
+        <input type="email" id="review-email-input" name="_replyto" placeholder="Your Email" required />
 
-  <!-- Honeypot spam protection -->
-  <input type="text" name="_gotcha" style="display:none" />
+        <!-- Photo upload (optional, multiple files allowed) -->
+        <label for="review-photos" class="form-label">
+          <span class="en-only">Photo(s) of the work (optional)</span>
+          <span class="gd-only">Dealbh(an) den obair (roghainneil)</span>
+        </label>
+        <input type="file" id="review-photos" name="photos[]" accept="image/*" multiple />
 
-  <!-- Submit button – one button, text switches with toggle -->
-  <button type="submit" id="review-submit-btn">Submit Review</button>
+        <!-- Honeypot spam protection -->
+        <input type="text" name="_gotcha" style="display:none" />
+
+        <!-- Submit button – text switches with toggle -->
+        <button type="submit" id="review-submit-btn">Submit Review</button>
       </form>
     </section>
 
@@ -124,10 +131,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
