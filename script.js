@@ -127,4 +127,10 @@ function updateText(map) {
 // Load English on page load
 document.addEventListener('DOMContentLoaded', () => {
   loadLanguage('en');
+  
+  // Force correct button text on initial load for EVERY page
+  const toggleBtn = document.getElementById('lang-toggle');
+  if (toggleBtn) {
+    toggleBtn.textContent = 'Gàidhlig (Scottish Gaelic)';
+  }
 });
