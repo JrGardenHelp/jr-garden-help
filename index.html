@@ -4,34 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JR Garden Help – Gardening Services in Dumbarton</title>
-  <link rel="stylesheet" href="style.css?v=1" />
-  <link rel="icon" href="data:,"> <!-- removes default favicon error -->
+  <link rel="stylesheet" href="style.css?v=2" /> <!-- Bump version to bust cache -->
+  <link rel="icon" href="data:,">
 </head>
 <body>
   <header>
     <div class="logo">JR Garden Help</div>
-  <nav>
-  <a href="#services" class="en-only">Services</a>
-  <a href="#services" class="gd-only" style="display:none;">Seirbheisean</a>
-  <a href="#about" class="en-only">About</a>
-  <a href="#about" class="gd-only" style="display:none;">Mu Dheth</a>
-  <a href="#contact" class="en-only">Contact</a>
-  <a href="#contact" class="gd-only" style="display:none;">Fios</a>
-  <button id="lang-toggle">Gàidhlig (Scottish Gaelic)</button>
-</nav>
+    <nav>
+      <a href="#services" class="en-only">Services</a>
+      <a href="#services" class="gd-only" style="display:none;">Seirbheisean</a>
+      <a href="#about" class="en-only">About</a>
+      <a href="#about" class="gd-only" style="display:none;">Mu Dheth</a>
+      <a href="#contact" class="en-only">Contact</a>
+      <a href="#contact" class="gd-only" style="display:none;">Fios</a>
+      <a href="reviews.html" class="en-only">Reviews</a>
+      <a href="reviews.html" class="gd-only" style="display:none;">Lèirmheasan</a>
+      <button id="lang-toggle">Gàidhlig (Scottish Gaelic)</button>
+    </nav>
   </header>
 
   <section id="hero">
     <h1>Local garden maintenance in Dumbarton & beyond</h1>
     <p>I help to keep your garden neat & tidy – weed removal, lawn mowing, grass cutting, hedge cutting, garden fence & shed painting and more.</p>
     <a href="#contact" class="btn">Get a Quote</a>
-    <!-- Reviews button in hero section -->
-<div class="hero-btn-group" style="margin-top: 1.5rem;">
-  <a href="reviews.html" class="btn reviews-btn en-only">See Reviews & Testimonials</a>
-  <a href="reviews.html" class="btn reviews-btn gd-only" style="display: none;">Faic Lèirmheasan & Teisteanasan</a>
-</div>
 
-    <!-- Company logo centered below the button -->
+    <!-- Reviews button in hero -->
+    <div class="hero-btn-group" style="margin-top: 1.5rem;">
+      <a href="reviews.html" class="btn reviews-btn en-only">See Reviews & Testimonials</a>
+      <a href="reviews.html" class="btn reviews-btn gd-only" style="display:none;">Faic Lèirmheasan & Teisteanasan</a>
+    </div>
+
+    <!-- Company logo -->
     <div style="text-align: center; margin-top: 2rem;">
       <img id="hero-logo" src="logo.png" alt="JR Garden Help Logo" style="max-width: 350px; height: auto;">
     </div>
@@ -48,76 +51,74 @@
     </div>
   </section>
 
-<!-- Before & After section -->
-<section id="before-after">
-  <h2>Before & After Transformations</h2>
-  <p>Here are some examples of gardens I’ve helped bring back to life.</p>
+  <!-- Before & After section -->
+  <section id="before-after">
+    <h2>Before & After Transformations</h2>
+    <p>Here are some examples of gardens I’ve helped bring back to life.</p>
 
-  <div class="ba-grid">
-    <!-- Pair 1 -->
-    <div class="ba-pair">
-      <div class="ba-photo">
-        <img src="before1.jpg" alt="Before" />
-        <p class="ba-label">Before</p>
+    <div class="ba-grid">
+      <!-- Pair 1 -->
+      <div class="ba-pair">
+        <div class="ba-photo">
+          <img src="before1.jpg" alt="Before" />
+          <p class="ba-label">Before</p>
+        </div>
+        <div class="ba-photo">
+          <img src="after1.jpg" alt="After" />
+          <p class="ba-label">After</p>
+        </div>
       </div>
-      <div class="ba-photo">
-        <img src="after1.jpg" alt="After" />
-        <p class="ba-label">After</p>
+
+      <!-- Pair 2 -->
+      <div class="ba-pair">
+        <div class="ba-photo">
+          <img src="before2.jpg" alt="Before" />
+          <p class="ba-label">Before</p>
+        </div>
+        <div class="ba-photo">
+          <img src="after2.jpg" alt="After" />
+          <p class="ba-label">After</p>
+        </div>
+      </div>
+
+      <!-- Pair 3 -->
+      <div class="ba-pair">
+        <div class="ba-photo">
+          <img src="before3.jpg" alt="Before" />
+          <p class="ba-label">Before</p>
+        </div>
+        <div class="ba-photo">
+          <img src="after3.jpg" alt="After" />
+          <p class="ba-label">After</p>
+        </div>
+      </div>
+
+      <!-- Pair 4 -->
+      <div class="ba-pair">
+        <div class="ba-photo">
+          <img src="before4.jpg" alt="Before" />
+          <p class="ba-label">Before</p>
+        </div>
+        <div class="ba-photo">
+          <img src="after4.jpg" alt="After" />
+          <p class="ba-label">After</p>
+        </div>
+      </div>
+
+      <!-- Pair 5 -->
+      <div class="ba-pair">
+        <div class="ba-photo">
+          <img src="before5.jpg" alt="Before" />
+          <p class="ba-label">Before</p>
+        </div>
+        <div class="ba-photo">
+          <img src="after5.jpg" alt="After" />
+          <p class="ba-label">After</p>
+        </div>
       </div>
     </div>
-
-    <!-- Pair 2 (add more pairs as needed) -->
-    <div class="ba-pair">
-      <div class="ba-photo">
-        <img src="before2.jpg" alt="Before" />
-        <p class="ba-label">Before</p>
-      </div>
-      <div class="ba-photo">
-        <img src="after2.jpg" alt="After" />
-        <p class="ba-label">After</p>
-      </div>
-    </div>
-
-    <!-- Add more .ba-pair divs here -->
-  </div>
-
-<!-- Pair 3 -->
-<div class="ba-pair">
-  <div class="ba-photo">
-    <img src="before3.jpg" alt="Before photo" />
-    <p class="ba-label">Before</p>
-  </div>
-  <div class="ba-photo">
-    <img src="after3.jpg" alt="After photo" />
-    <p class="ba-label">After</p>
-  </div>
-</div>
-
-<!-- Pair 4 -->
-<div class="ba-pair">
-  <div class="ba-photo">
-    <img src="before4.jpg" alt="Before photo" />
-    <p class="ba-label">Before</p>
-  </div>
-  <div class="ba-photo">
-    <img src="after4.jpg" alt="After photo" />
-    <p class="ba-label">After</p>
-  </div>
-</div>
-
-<!-- Pair 5 -->
-<div class="ba-pair">
-  <div class="ba-photo">
-    <img src="before5.jpg" alt="Before photo" />
-    <p class="ba-label">Before</p>
-  </div>
-  <div class="ba-photo">
-    <img src="after5.jpg" alt="After photo" />
-    <p class="ba-label">After</p>
-  </div>
-</div>
   </section>
-  
+
   <section id="about">
     <h2>About JR Garden Help</h2>
     <p>Run by Jonathan Rainey since 2025. Based in Dumbarton, serving Dumbarton, West Dunbartonshire and neighbouring Council Areas.</p>
@@ -138,7 +139,6 @@
     <p>© 2025 JR Garden Help – All rights reserved.</p>
   </footer>
 
-  <!-- Script at the bottom of body (best practice) -->
-  <script src="script.js?v=1"></script>
+  <script src="script.js?v=2"></script> <!-- Bump version to force refresh -->
 </body>
 </html>
