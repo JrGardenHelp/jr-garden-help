@@ -1,14 +1,12 @@
 const translations = {};
 let currentLang = 'en';
 
-// Language toggle click handler
 document.getElementById('lang-toggle').addEventListener('click', () => {
   currentLang = currentLang === 'en' ? 'gd' : 'en';
   loadLanguage(currentLang);
   document.getElementById('lang-toggle').textContent = currentLang === 'en' ? 'Gàidhlig (Scottish Gaelic)' : 'Beurla (English)';
 });
 
-// Load language function
 function loadLanguage(lang) {
   if (lang === 'en') {
     document.documentElement.lang = 'en';
@@ -42,22 +40,27 @@ function loadLanguage(lang) {
       .then(r => r.json())
       .then(data => {
         document.documentElement.lang = 'gd';
-        document.title = data.title || "IÓR Gàrradh Cobhair – Seirbheisean Gàrraidh ann an Dùn Breatann";
+        document.title = data.title;
         updateText(data);
-      })
-      .catch(err => console.error('Error loading Gaelic JSON:', err));
+      });
   }
 }
 
-// Main update function – runs on every language change
 function updateText(map) {
   // Common elements
   document.querySelector('.logo').textContent = map.logo || 'JR Garden Help';
-  document.querySelector('nav a[href="#services"]').textContent = map.nav_services || 'Services';
-  document.querySelector('nav a[href="#about"]').textContent = map.nav_about || 'About';
-  document.querySelector('nav a[href="#contact"]').textContent = map.nav_contact || 'Contact';
 
-  // Hero section (index.html only)
+  // Nav links (updated safely if they exist)
+  const navServices = document.querySelector('nav a[href="#services"]');
+  if (navServices) navServices.textContent = map.nav_services || 'Services';
+
+  const navAbout = document.querySelector('nav a[href="#about"]');
+  if (navAbout) navAbout.textContent = map.nav_about || 'About';
+
+  const navContact = document.querySelector('nav a[href="#contact"]');
+  if (navContact) navContact.textContent = map.nav_contact || 'Contact';
+
+  // Hero (index.html only)
   const heroH1 = document.querySelector('#hero h1');
   if (heroH1) heroH1.textContent = map.hero_h1 || '';
   const heroP = document.querySelector('#hero p');
@@ -65,7 +68,7 @@ function updateText(map) {
   const heroBtn = document.querySelector('#hero .btn');
   if (heroBtn) heroBtn.textContent = map.hero_btn || 'Get a Quote';
 
-  // Services section (index.html only)
+  // Services (index.html only)
   const servicesH2 = document.querySelector('#services h2');
   if (servicesH2) servicesH2.textContent = map.services_h2 || 'My Services';
 
@@ -76,19 +79,15 @@ function updateText(map) {
   if (cards[3]) cards[3].textContent = map.service_4 || 'Weed Control';
   if (cards[4]) cards[4].textContent = map.service_5 || 'Grass Cutting';
 
-  // About section
-  const aboutH2 = document.querySelector('#about h2');
-  if (aboutH2) aboutH2.textContent = map.about_h2 || 'About JR Garden Help';
-  const aboutP = document.querySelector('#about p');
-  if (aboutP) aboutP.textContent = map.about_p || '';
+  // About
+  document.querySelector('#about h2').textContent = map.about_h2 || 'About JR Garden Help';
+  document.querySelector('#about p').textContent = map.about_p || '';
 
-  // Contact section
-  const contactH2 = document.querySelector('#contact h2');
-  if (contactH2) contactH2.textContent = map.contact_h2 || 'Contact Me';
-  const contactP = document.querySelector('#contact p');
-  if (contactP) contactP.innerHTML = map.contact_p || '';
+  // Contact
+  document.querySelector('#contact h2').textContent = map.contact_h2 || 'Contact Me';
+  document.querySelector('#contact p').innerHTML = map.contact_p || '';
 
-  // Main contact form (index.html)
+  // Main contact form
   const nameInput = document.getElementById('name-input');
   if (nameInput) nameInput.placeholder = map.form_name || 'Your Name';
   const emailInput = document.getElementById('email-input');
@@ -98,24 +97,23 @@ function updateText(map) {
   const submitButton = document.getElementById('submit-button');
   if (submitButton) submitButton.textContent = map.form_button || 'Send';
 
-  // Review form (reviews.html)
-  const reviewNameInput = document.getElementById('review-name-input');
-  if (reviewNameInput) reviewNameInput.placeholder = map.form_name || 'Your Name';
+  // Review form fields (reviews.html)
+  const reviewName = document.getElementById('review-name-input');
+  if (reviewName) reviewName.placeholder = map.form_name || 'Your Name';
 
-  const reviewTextInput = document.getElementById('review-text-input');
-  if (reviewTextInput) reviewTextInput.placeholder = map.form_message || 'Your Review / Feedback';
+  const reviewText = document.getElementById('review-text-input');
+  if (reviewText) reviewText.placeholder = map.form_message || 'Your Review / Feedback';
 
-  const reviewEmailInput = document.getElementById('review-email-input');
-  if (reviewEmailInput) reviewEmailInput.placeholder = map.form_email || 'Your Email';
+  const reviewEmail = document.getElementById('review-email-input');
+  if (reviewEmail) reviewEmail.placeholder = map.form_email || 'Your Email';
 
   const reviewSubmitBtn = document.getElementById('review-submit-btn');
   if (reviewSubmitBtn) reviewSubmitBtn.textContent = map.form_button || 'Submit Review';
 
   // Footer
-  const footerP = document.querySelector('footer p');
-  if (footerP) footerP.innerHTML = map.footer || '© 2025 JR Garden Help – All rights reserved.';
+  document.querySelector('footer p').innerHTML = map.footer || '© 2025 JR Garden Help – All rights reserved.';
 
-  // Show/hide elements with .en-only / .gd-only classes
+  // Handle bilingual visibility (.en-only / .gd-only)
   document.querySelectorAll('.en-only').forEach(el => {
     el.style.display = (currentLang === 'en') ? 'block' : 'none';
   });
@@ -124,13 +122,7 @@ function updateText(map) {
   });
 }
 
-// Load English on page load
+// Load English on start
 document.addEventListener('DOMContentLoaded', () => {
   loadLanguage('en');
-  
-  // Force correct button text on initial load for EVERY page
-  const toggleBtn = document.getElementById('lang-toggle');
-  if (toggleBtn) {
-    toggleBtn.textContent = 'Gàidhlig (Scottish Gaelic)';
-  }
 });
