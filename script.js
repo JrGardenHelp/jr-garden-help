@@ -1,12 +1,14 @@
 const translations = {};
 let currentLang = 'en';
 
+// Toggle click handler
 document.getElementById('lang-toggle').addEventListener('click', () => {
   currentLang = currentLang === 'en' ? 'gd' : 'en';
   loadLanguage(currentLang);
   document.getElementById('lang-toggle').textContent = currentLang === 'en' ? 'Gàidhlig (Scottish Gaelic)' : 'Beurla (English)';
 });
 
+// Load language
 function loadLanguage(lang) {
   if (lang === 'en') {
     document.documentElement.lang = 'en';
@@ -46,21 +48,25 @@ function loadLanguage(lang) {
   }
 }
 
+// Update text function
 function updateText(map) {
-  // Common elements
+  // Logo
   document.querySelector('.logo').textContent = map.logo || 'JR Garden Help';
 
-  // Nav links (updated safely if they exist)
-  const navServices = document.querySelector('nav a[href="#services"]');
-  if (navServices) navServices.textContent = map.nav_services || 'Services';
+  // Nav links (if they exist)
+  document.querySelectorAll('nav a').forEach(link => {
+    if (link.textContent.trim() === 'Services' || link.textContent.trim() === 'Seirbheisean') {
+      link.textContent = map.nav_services || 'Services';
+    } else if (link.textContent.trim() === 'About' || link.textContent.trim() === 'Mu Dheth') {
+      link.textContent = map.nav_about || 'About';
+    } else if (link.textContent.trim() === 'Contact' || link.textContent.trim() === 'Fios') {
+      link.textContent = map.nav_contact || 'Contact';
+    } else if (link.textContent.trim() === 'Home' || link.textContent.trim() === 'Dhachaigh') {
+      link.textContent = map.nav_home || 'Home'; // optional, add to gaelic.json if needed
+    }
+  });
 
-  const navAbout = document.querySelector('nav a[href="#about"]');
-  if (navAbout) navAbout.textContent = map.nav_about || 'About';
-
-  const navContact = document.querySelector('nav a[href="#contact"]');
-  if (navContact) navContact.textContent = map.nav_contact || 'Contact';
-
-  // Hero (index.html only)
+  // Hero (index only)
   const heroH1 = document.querySelector('#hero h1');
   if (heroH1) heroH1.textContent = map.hero_h1 || '';
   const heroP = document.querySelector('#hero p');
@@ -68,10 +74,9 @@ function updateText(map) {
   const heroBtn = document.querySelector('#hero .btn');
   if (heroBtn) heroBtn.textContent = map.hero_btn || 'Get a Quote';
 
-  // Services (index.html only)
+  // Services (index only)
   const servicesH2 = document.querySelector('#services h2');
   if (servicesH2) servicesH2.textContent = map.services_h2 || 'My Services';
-
   const cards = document.querySelectorAll('#services .card');
   if (cards[0]) cards[0].textContent = map.service_1 || 'Lawn Mowing & Edging';
   if (cards[1]) cards[1].textContent = map.service_2 || 'Garden & Shed Painting';
@@ -97,7 +102,7 @@ function updateText(map) {
   const submitButton = document.getElementById('submit-button');
   if (submitButton) submitButton.textContent = map.form_button || 'Send';
 
-  // Review form fields (reviews.html)
+  // Review form
   const reviewName = document.getElementById('review-name-input');
   if (reviewName) reviewName.placeholder = map.form_name || 'Your Name';
 
@@ -113,7 +118,7 @@ function updateText(map) {
   // Footer
   document.querySelector('footer p').innerHTML = map.footer || '© 2025 JR Garden Help – All rights reserved.';
 
-  // Handle bilingual visibility (.en-only / .gd-only)
+  // Visibility for .en-only / .gd-only
   document.querySelectorAll('.en-only').forEach(el => {
     el.style.display = (currentLang === 'en') ? 'block' : 'none';
   });
@@ -122,7 +127,7 @@ function updateText(map) {
   });
 }
 
-// Load English on start
+// Initial load
 document.addEventListener('DOMContentLoaded', () => {
   loadLanguage('en');
 });
