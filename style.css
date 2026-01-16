@@ -198,3 +198,28 @@ nav a:first-child {
   font-size: 0.9rem;
   font-weight: bold;
 }
+
+/* Custom file upload */
+.custom-file-upload {
+  margin: 1rem 0;
+}
+
+.upload-btn {
+  background: #ff9800;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+
+.upload-btn:hover {
+  background: #f57c00;
+}
+
+.file-name {
+  font-style: italic;
+  color: #555;
+}
