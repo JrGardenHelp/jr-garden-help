@@ -127,49 +127,9 @@ function updateText(map) {
   document.querySelectorAll('.gd-only').forEach(el => {
     el.style.display = (currentLang === 'gd') ? 'block' : 'none';
   });
-}
+});
 
 // Initial load
 document.addEventListener('DOMContentLoaded', () => {
   loadLanguage('en');
-
-  // Force correct initial button text
-  const toggleBtn = document.getElementById('lang-toggle');
-  if (toggleBtn) {
-    toggleBtn.textContent = 'Gàidhlig (Scottish Gaelic)';
-  }
-});
-
-// Custom file upload handling – make button and status text bilingual
-document.addEventListener('DOMContentLoaded', () => {
-  const fileInput = document.getElementById('review-photos');
-  const customBtn = document.getElementById('custom-upload-btn');
-  const fileNameDisplay = document.getElementById('file-name-display');
-
-  if (fileInput && customBtn && fileNameDisplay) {
-    // Click hidden input when custom button is clicked
-    customBtn.addEventListener('click', () => {
-      fileInput.click();
-    });
-
-    // Update button and status text on language change and file selection
-    function updateUploadUI() {
-      const isEn = currentLang === 'en';
-      customBtn.textContent = isEn ? 'Choose File(s)' : 'Tagh Dealbhan';
-      if (fileInput.files.length > 0) {
-        fileNameDisplay.textContent = isEn 
-          ? `${fileInput.files.length} file(s) selected` 
-          : `${fileInput.files.length} faidhle air an taghadh`;
-      } else {
-        fileNameDisplay.textContent = isEn ? 'No file chosen' : 'Chan eil faidhle air a thaghadh';
-      }
-    }
-
-    // Run initially and after toggle
-    updateUploadUI();
-    document.getElementById('lang-toggle').addEventListener('click', updateUploadUI);
-
-    // Update when files are selected
-    fileInput.addEventListener('change', updateUploadUI);
-  }
 });
