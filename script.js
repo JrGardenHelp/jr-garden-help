@@ -184,3 +184,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+// Custom file upload button & status text – bilingual switching
+document.addEventListener('DOMContentLoaded', () => {
+  const fileInput = document.getElementById('review-photos');
+  const customBtn = document.getElementById('custom-upload-btn');
+  const fileNameDisplay = document.getElementById('file-name-display');
+
+  if (fileInput && customBtn && fileNameDisplay) {
+    // Click the hidden input when custom button is clicked
+    customBtn.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    // Update button text & status on language change
+    function updateFileUploadUI() {
+      if (currentLang === 'en') {
+        customBtn.textContent = 'Choose File(s)';
+        fileNameDisplay.textContent = fileInput.files.length > 0 
+          ? `${fileInput.files.length} file(s) selected` 
+          : 'No file chosen';
+      } else {
+        customBtn.textContent = 'Tagh Dealbhan';
+        fileNameDisplay.textContent = fileInput.files.length > 0 
+          ? `${fileInput.files.length} faidhle air an taghadh` 
+          : 'Chan eil faidhle air a thaghadh';
+      }
+    }
+
+    // Run on load and after every language change
+    updateFileUploadUI();
+
+    // Re-run when language changes (hook into existing toggle)
+    const originalClick = document.getElementById('lang-toggle').onclick;
+    document.getElementById('lang-toggle').onclick = function() {
+      if (originalClick) originalClick();
+      updateFileUploadUI();
+    };
+
+    // Update status when files are selected
+    fileInput.addEventListener('change', updateFileUploadUI);
+  }
+});
