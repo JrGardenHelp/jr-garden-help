@@ -232,3 +232,38 @@ document.querySelectorAll('.en-only').forEach(el => {
 document.querySelectorAll('.gd-only').forEach(el => {
   el.style.display = (currentLang === 'gd') ? 'block' : 'none';
 });
+
+// Custom file upload button text switching
+function updateFileUploadButton() {
+  const customBtn = document.getElementById('custom-upload-btn');
+  const fileNameDisplay = document.getElementById('file-name-display');
+  const fileInput = document.getElementById('review-photos');
+
+  if (customBtn) {
+    customBtn.textContent = currentLang === 'en' ? 'Choose File(s)' : 'Tagh Dealbhan';
+  }
+
+  if (fileNameDisplay && fileInput) {
+    if (fileInput.files.length > 0) {
+      fileNameDisplay.textContent = currentLang === 'en' 
+        ? `${fileInput.files.length} file(s) selected` 
+        : `${fileInput.files.length} faidhle air an taghadh`;
+    } else {
+      fileNameDisplay.textContent = currentLang === 'en' 
+        ? 'No file chosen' 
+        : 'Chan eil faidhle air a thaghadh';
+    }
+  }
+}
+
+// Run on initial load and after every language change
+document.addEventListener('DOMContentLoaded', () => {
+  loadLanguage('en');
+  updateFileUploadButton();
+
+  // Re-run after toggle
+  document.getElementById('lang-toggle').addEventListener('click', updateFileUploadButton);
+});
+
+// Also run when files are selected
+document.getElementById('review-photos')?.addEventListener('change', updateFileUploadButton);
