@@ -225,3 +225,10 @@ document.addEventListener('DOMContentLoaded', () => {
     fileInput.addEventListener('change', updateFileUploadUI);
   }
 });
+// Handle bilingual visibility for .en-only / .gd-only classes
+document.querySelectorAll('.en-only').forEach(el => {
+  el.style.display = (currentLang === 'en') ? 'block' : 'none';
+});
+document.querySelectorAll('.gd-only').forEach(el => {
+  el.style.display = (currentLang === 'gd') ? 'block' : 'none';
+});
