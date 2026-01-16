@@ -157,3 +157,30 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleBtn.textContent = 'Gàidhlig (Scottish Gaelic)';
   }
 });
+
+// Custom file upload handling for review form
+document.addEventListener('DOMContentLoaded', () => {
+  const fileInput = document.getElementById('review-photos');
+  const customBtn = document.getElementById('custom-upload-btn');
+  const fileNameDisplay = document.getElementById('file-name-display');
+
+  if (fileInput && customBtn && fileNameDisplay) {
+    customBtn.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files.length > 0) {
+        const fileCount = fileInput.files.length;
+        const text = currentLang === 'en' 
+          ? `${fileCount} file(s) selected` 
+          : `${fileCount} faidhle air an taghadh`;
+        fileNameDisplay.textContent = text;
+      } else {
+        fileNameDisplay.textContent = currentLang === 'en' 
+          ? 'No file chosen' 
+          : 'Chan eil faidhle air a thaghadh';
+      }
+    });
+  }
+});
