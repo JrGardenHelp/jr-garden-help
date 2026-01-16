@@ -15,6 +15,7 @@ function loadLanguage(lang) {
     document.title = "JR Garden Help – Gardening Services in Dumbarton";
     updateText({
       logo: "JR Garden Help",
+      nav_home: "Home",
       nav_services: "Services",
       nav_about: "About",
       nav_contact: "Contact",
