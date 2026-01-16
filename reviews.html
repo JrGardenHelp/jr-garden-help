@@ -91,7 +91,12 @@
           <span class="en-only">Photo(s) of the work (optional)</span>
           <span class="gd-only">Dealbh(an) den obair (roghainneil)</span>
         </label>
-        <input type="file" id="review-photos" name="photos[]" accept="image/*" multiple />
+        <div class="custom-file-upload">
+          <input type="file" id="review-photos" name="photos[]" accept="image/*" multiple style="display:none;" />
+          <button type="button" id="custom-upload-btn" class="upload-btn en-only">Tagh Dealbhan</button>
+          <button type="button" id="custom-upload-btn" class="upload-btn gd-only" style="display:none;">Tagh Dealbhan</button>
+          <span id="file-name-display" class="file-name">No file chosen / Chan eil faidhle air a thaghadh</span>
+        </div>
 
         <!-- Honeypot spam protection -->
         <input type="text" name="_gotcha" style="display:none" />
@@ -131,4 +136,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
