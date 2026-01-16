@@ -43,66 +43,35 @@
       <!-- You can paste .review-card blocks in this section later -->
     </section>
 
-    <!-- Review submission form with photo upload -->
+    <!-- Review submission form -->
     <section class="review-submit">
       <h2 class="en-only">Submit Your Review</h2>
       <h2 class="gd-only">Cuir a-steach do Lèirmheas</h2>
 
-      <form action="https://formspree.io/f/mojjqlwk" method="POST" enctype="multipart/form-data">
-        <!-- Name field with bilingual label -->
-        <label for="review-name-input" class="form-label">
-          <span class="en-only">Your Name</span>
-          <span class="gd-only">D’ Ainm</span>
-        </label>
+      <form action="https://formspree.io/f/mojjqlwk" method="POST">
         <input type="text" id="review-name-input" name="name" placeholder="Your Name" required />
 
-        <!-- Rating dropdown with bilingual label -->
         <div class="rating-group">
-          <label class="form-label">
-            <span class="en-only">Rating</span>
-            <span class="gd-only">Rangachadh</span>
-          </label>
+          <label class="en-only">Rating:</label>
+          <label class="gd-only">Rangachadh:</label>
           <select name="rating" required>
-            <option value="">— Select / Tagh —</option>
-            <option value="5">⭐⭐⭐⭐⭐ (Excellent / Sàr-mhath)</option>
-            <option value="4">⭐⭐⭐⭐ (Very Good / Glè mhath)</option>
-            <option value="3">⭐⭐⭐ (Good / Math)</option>
-            <option value="2">⭐⭐ (Fair / Cuibheasach)</option>
-            <option value="1">⭐ (Poor / Bochd)</option>
+            <option value="">— Select —</option>
+            <option value="5">⭐⭐⭐⭐⭐ (Excellent)</option>
+            <option value="4">⭐⭐⭐⭐ (Very Good)</option>
+            <option value="3">⭐⭐⭐ (Good)</option>
+            <option value="2">⭐⭐ (Fair)</option>
+            <option value="1">⭐ (Poor)</option>
           </select>
         </div>
 
-        <!-- Review text area with bilingual label -->
-        <label for="review-text-input" class="form-label">
-          <span class="en-only">Your Review / Feedback</span>
-          <span class="gd-only">Do Lèirmheas / Do Bheachd</span>
-        </label>
         <textarea id="review-text-input" name="review" placeholder="Your Review / Feedback" rows="6" required></textarea>
 
-        <!-- Email field with bilingual label (mandatory) -->
-        <label for="review-email-input" class="form-label">
-          <span class="en-only">Your Email</span>
-          <span class="gd-only">Do Phost-d</span>
-        </label>
-        <input type="email" id="review-email-input" name="_replyto" placeholder="Your Email" required />
+        <input type="email" id="review-email-input" name="_replyto" placeholder="Your Email (optional)" />
 
-        <!-- Photo upload (optional, multiple files allowed) -->
-        <label for="review-photos" class="form-label">
-          <span class="en-only">Photo(s) of the work (optional)</span>
-          <span class="gd-only">Dealbh(an) den obair (roghainneil)</span>
-        </label>
-        <div class="custom-file-upload">
-          <input type="file" id="review-photos" name="photos[]" accept="image/*" multiple style="display:none;" />
-          <button type="button" id="custom-upload-btn">Choose File(s)</button>
-          <span id="file-name-display" class="file-name">No file chosen</span>
-        </div>
-
-        <!-- Honeypot spam protection -->
+        <!-- Honeypot -->
         <input type="text" name="_gotcha" style="display:none" />
 
-        <!-- Submit button – bilingual side-by-side -->
-        <button type="submit" id="review-submit-btn-en" class="en-only">Submit Review</button>
-        <button type="submit" id="review-submit-btn-gd" class="gd-only" style="display:none;">Cuir a-steach Lèirmheas</button>
+        <button type="submit" id="review-submit-btn">Submit Review</button>
       </form>
     </section>
 
@@ -113,11 +82,11 @@
 
       <p class="en-only">
         I'd love to hear your feedback! Please leave a review here and/or on my Google Business Profile and/or other Social Media pages.
-        <a href="https://share.google/oPaj60UUpeXLs9TYx" target="_blank" rel="noopener noreferrer">Google Business Profile</a>.
+        <a href="https://g.page/your-google-business-link/review" target="_blank" rel="noopener noreferrer">Google Business Profile</a>.
       </p>
       <p class="gd-only">
         Bu toil leam do bheachd fhaighinn! Feuch an cuir thu lèirmheas an seo agus/no air mo Phròifil Gnìomhachais Google agus/no air duilleagan meadhanan sòisealta eile.
-        <a href="https://share.google/oPaj60UUpeXLs9TYx" target="_blank" rel="noopener noreferrer">Pròifil Gnìomhachais Google againn</a>.
+        <a href="https://g.page/your-google-business-link/review" target="_blank" rel="noopener noreferrer">Pròifil Gnìomhachais Google againn</a>.
       </p>
 
       <p class="en-only" style="margin-top: 1.5rem;">
