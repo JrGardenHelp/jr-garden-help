@@ -223,3 +223,23 @@ nav a:first-child {
   font-style: italic;
   color: #555;
 }
+
+.custom-file-upload button {
+  background: #ff9800;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+
+.custom-file-upload button:hover {
+  background: #f57c00;
+}
+
+.custom-file-upload .file-name {
+  font-style: italic;
+  color: #555;
+}
