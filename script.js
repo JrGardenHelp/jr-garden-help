@@ -1,26 +1,28 @@
-const translations = {};
 let currentLang = 'en';
 
-// Toggle click handler
-document.getElementById('lang-toggle').addEventListener('click', () => {
+const langToggle = document.getElementById('lang-toggle');
+
+langToggle.addEventListener('click', () => {
   currentLang = currentLang === 'en' ? 'gd' : 'en';
   loadLanguage(currentLang);
-  document.getElementById('lang-toggle').textContent = currentLang === 'en' ? 'Gàidhlig (Scottish Gaelic)' : 'Beurla (English)';
 });
 
-// Load language
 function loadLanguage(lang) {
   if (lang === 'en') {
     document.documentElement.lang = 'en';
     document.title = "JR Garden Help – Gardening Services in Dumbarton";
+    langToggle.textContent = "Gàidhlig (Scottish Gaelic)";
+    
+    // Default English Map
     updateText({
       logo: "JR Garden Help",
       nav_home: "Home",
       nav_services: "Services",
       nav_about: "About",
       nav_contact: "Contact",
+      nav_reviews: "Reviews",
       hero_h1: "Local Gardening in Dumbarton, West Dunbartonshire and Beyond.",
-      hero_p: "I help to keep your garden neat & tidy – weed removal, lawn mowing, grass cutting, hedge cutting, garden fence & shed painting and more.",
+      hero_p: "I help to keep your garden neat & tidy...",
       hero_btn: "Get a Quote",
       services_h2: "My Services",
       service_1: "Lawn Mowing & Edging",
@@ -29,7 +31,7 @@ function loadLanguage(lang) {
       service_4: "Weed Control",
       service_5: "Grass Cutting",
       about_h2: "About JR Garden Help",
-      about_p: "Run by Jonathan Rainey since 2025. Based in Dumbarton, serving Dumbarton, West Dunbartonshire and Neighbouring Council Areas.",
+      about_p: "Run by Jonathan Rainey since 2025...",
       contact_h2: "Contact Me",
       contact_p: "Email: jrgardenhelp@gmx.com<br>Phone: 07462 167433",
       form_name: "Your Name",
@@ -44,92 +46,66 @@ function loadLanguage(lang) {
       .then(data => {
         document.documentElement.lang = 'gd';
         document.title = data.title;
+        langToggle.textContent = "Beurla (English)";
         updateText(data);
       });
   }
 }
 
-// Update text function
 function updateText(map) {
-  // Logo
-  document.querySelector('.logo').textContent = map.logo || 'JR Garden Help';
+  // 1. Update Navigation and Logo
+  const logo = document.querySelector('.logo');
+  if (logo) logo.textContent = map.logo;
 
-  // Nav links - update text based on href
   document.querySelectorAll('nav a').forEach(link => {
     const href = link.getAttribute('href');
-    if (href === 'index.html') {
-      link.textContent = map.nav_home || 'Home';
-    } else if (href === 'index.html#services') {
-      link.textContent = map.nav_services || 'Services';
-    } else if (href === 'index.html#about') {
-      link.textContent = map.nav_about || 'About';
-    } else if (href === 'index.html#contact') {
-      link.textContent = map.nav_contact || 'Contact';
-    }
+    if (href === 'index.html') link.textContent = map.nav_home;
+    if (href === 'index.html#services' || href === '#services') link.textContent = map.nav_services;
+    if (href === 'index.html#about' || href === '#about') link.textContent = map.nav_about;
+    if (href === 'index.html#contact' || href === '#contact') link.textContent = map.nav_contact;
+    if (href === 'reviews.html') link.textContent = map.nav_reviews;
   });
 
-  // Hero (index only)
+  // 2. Update Hero Section (If it exists)
   const heroH1 = document.querySelector('#hero h1');
-  if (heroH1) heroH1.textContent = map.hero_h1 || '';
+  if (heroH1) heroH1.textContent = map.hero_h1;
+  
   const heroP = document.querySelector('#hero p');
-  if (heroP) heroP.textContent = map.hero_p || '';
-  const heroBtn = document.querySelector('#hero .btn');
-  if (heroBtn) heroBtn.textContent = map.hero_btn || 'Get a Quote';
+  if (heroP) heroP.textContent = map.hero_p;
 
-  // Services (index only)
+  // 3. Update Services
   const servicesH2 = document.querySelector('#services h2');
-  if (servicesH2) servicesH2.textContent = map.services_h2 || 'My Services';
+  if (servicesH2) servicesH2.textContent = map.services_h2;
+
   const cards = document.querySelectorAll('#services .card');
-  if (cards[0]) cards[0].textContent = map.service_1 || 'Lawn Mowing & Edging';
-  if (cards[1]) cards[1].textContent = map.service_2 || 'Garden & Shed Painting';
-  if (cards[2]) cards[2].textContent = map.service_3 || 'Hedge Trimming';
-  if (cards[3]) cards[3].textContent = map.service_4 || 'Weed Control';
-  if (cards[4]) cards[4].textContent = map.service_5 || 'Grass Cutting';
+  if (cards.length > 0) {
+    if (cards[0]) cards[0].textContent = map.service_1;
+    if (cards[1]) cards[1].textContent = map.service_2;
+    if (cards[2]) cards[2].textContent = map.service_3;
+    if (cards[3]) cards[3].textContent = map.service_4;
+    if (cards[4]) cards[4].textContent = map.service_5;
+  }
 
-  // About
-  document.querySelector('#about h2').textContent = map.about_h2 || 'About JR Garden Help';
-  document.querySelector('#about p').textContent = map.about_p || '';
+  // 4. Update Forms (Shared logic for Index and Reviews)
+  const nameInput = document.getElementById('name-input') || document.getElementById('review-name-input');
+  if (nameInput) nameInput.placeholder = map.form_name;
 
-  // Contact
-  document.querySelector('#contact h2').textContent = map.contact_h2 || 'Contact Me';
-  document.querySelector('#contact p').innerHTML = map.contact_p || '';
+  const emailInput = document.getElementById('email-input') || document.getElementById('review-email-input');
+  if (emailInput) emailInput.placeholder = map.form_email;
 
-  // Main contact form
-  const nameInput = document.getElementById('name-input');
-  if (nameInput) nameInput.placeholder = map.form_name || 'Your Name';
-  const emailInput = document.getElementById('email-input');
-  if (emailInput) emailInput.placeholder = map.form_email || 'Your Email';
-  const messageTextarea = document.getElementById('message-textarea');
-  if (messageTextarea) messageTextarea.placeholder = map.form_message || 'Your Message';
-  const submitButton = document.getElementById('submit-button');
-  if (submitButton) submitButton.textContent = map.form_button || 'Send';
+  const msgInput = document.getElementById('message-textarea') || document.getElementById('review-text-input');
+  if (msgInput) msgInput.placeholder = map.form_message;
 
-  // Review form
-  const reviewName = document.getElementById('review-name-input');
-  if (reviewName) reviewName.placeholder = map.form_name || 'Your Name';
+  const submitBtn = document.getElementById('submit-button') || document.getElementById('review-submit-btn');
+  if (submitBtn) submitBtn.textContent = map.form_button;
 
-  const reviewText = document.getElementById('review-text-input');
-  if (reviewText) reviewText.placeholder = map.form_message || 'Your Review / Feedback';
+  // 5. Update Footer
+  const footerP = document.querySelector('footer p');
+  if (footerP) footerP.innerHTML = map.footer;
 
-  const reviewEmail = document.getElementById('review-email-input');
-  if (reviewEmail) reviewEmail.placeholder = map.form_email || 'Your Email';
-
-  const reviewSubmitBtn = document.getElementById('review-submit-btn');
-  if (reviewSubmitBtn) reviewSubmitBtn.textContent = map.form_button || 'Submit Review';
-
-  // Footer
-  document.querySelector('footer p').innerHTML = map.footer || '© 2025 JR Garden Help – All rights reserved.';
-
-  // Handle visibility for bilingual elements
-  document.querySelectorAll('.en-only').forEach(el => {
-    el.style.display = (currentLang === 'en') ? 'block' : 'none';
-  });
-  document.querySelectorAll('.gd-only').forEach(el => {
-    el.style.display = (currentLang === 'gd') ? 'block' : 'none';
-  });
+  // 6. Handle visibility for manual bilingual classes
+  document.querySelectorAll('.en-only').forEach(el => el.style.display = (currentLang === 'en' ? '' : 'none'));
+  document.querySelectorAll('.gd-only').forEach(el => el.style.display = (currentLang === 'gd' ? '' : 'none'));
 }
 
-// Initial load
-document.addEventListener('DOMContentLoaded', () => {
-  loadLanguage('en');
-});
+document.addEventListener('DOMContentLoaded', () => loadLanguage('en'));
