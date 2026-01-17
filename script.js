@@ -11,9 +11,8 @@ function loadLanguage(lang) {
   if (lang === 'en') {
     document.documentElement.lang = 'en';
     document.title = "JR Garden Help – Gardening Services in Dumbarton";
-    langToggle.textContent = "Gàidhlig (Scottish Gaelic)";
+    if(langToggle) langToggle.textContent = "Gàidhlig (Scottish Gaelic)";
     
-    // Default English Map
     updateText({
       logo: "JR Garden Help",
       nav_home: "Home",
@@ -21,8 +20,8 @@ function loadLanguage(lang) {
       nav_about: "About",
       nav_contact: "Contact",
       nav_reviews: "Reviews",
-      hero_h1: "Local Gardening in Dumbarton, West Dunbartonshire and Beyond.",
-      hero_p: "I help to keep your garden neat & tidy...",
+      hero_h1: "Local garden maintenance in Dumbarton & beyond",
+      hero_p: "I help to keep your garden neat & tidy – weed removal, lawn mowing, grass cutting, hedge cutting, garden fence & shed painting and more.",
       hero_btn: "Get a Quote",
       services_h2: "My Services",
       service_1: "Lawn Mowing & Edging",
@@ -31,7 +30,7 @@ function loadLanguage(lang) {
       service_4: "Weed Control",
       service_5: "Grass Cutting",
       about_h2: "About JR Garden Help",
-      about_p: "Run by Jonathan Rainey since 2025...",
+      about_p: "Run by Jonathan Rainey since 2025. Based in Dumbarton, serving Dumbarton, West Dunbartonshire and neighbouring Council Areas.",
       contact_h2: "Contact Me",
       contact_p: "Email: jrgardenhelp@gmx.com<br>Phone: 07462 167433",
       form_name: "Your Name",
@@ -46,64 +45,71 @@ function loadLanguage(lang) {
       .then(data => {
         document.documentElement.lang = 'gd';
         document.title = data.title;
-        langToggle.textContent = "Beurla (English)";
+        if(langToggle) langToggle.textContent = "Beurla (English)";
         updateText(data);
       });
   }
 }
 
 function updateText(map) {
-  // 1. Update Navigation and Logo
+  // Navigation & Logo
   const logo = document.querySelector('.logo');
   if (logo) logo.textContent = map.logo;
 
   document.querySelectorAll('nav a').forEach(link => {
     const href = link.getAttribute('href');
-    if (href === 'index.html') link.textContent = map.nav_home;
-    if (href === 'index.html#services' || href === '#services') link.textContent = map.nav_services;
-    if (href === 'index.html#about' || href === '#about') link.textContent = map.nav_about;
-    if (href === 'index.html#contact' || href === '#contact') link.textContent = map.nav_contact;
+    if (href === 'index.html' || href === '/') link.textContent = map.nav_home;
+    if (href?.includes('#services')) link.textContent = map.nav_services;
+    if (href?.includes('#about')) link.textContent = map.nav_about;
+    if (href?.includes('#contact')) link.textContent = map.nav_contact;
     if (href === 'reviews.html') link.textContent = map.nav_reviews;
   });
 
-  // 2. Update Hero Section (If it exists)
-  const heroH1 = document.querySelector('#hero h1');
-  if (heroH1) heroH1.textContent = map.hero_h1;
-  
-  const heroP = document.querySelector('#hero p');
-  if (heroP) heroP.textContent = map.hero_p;
+  // Hero Section
+  const h1 = document.querySelector('#hero h1');
+  if (h1) h1.textContent = map.hero_h1;
+  const hp = document.querySelector('#hero p');
+  if (hp) hp.textContent = map.hero_p;
+  const hbtn = document.querySelector('#hero .btn');
+  if (hbtn) hbtn.textContent = map.hero_btn;
 
-  // 3. Update Services
-  const servicesH2 = document.querySelector('#services h2');
-  if (servicesH2) servicesH2.textContent = map.services_h2;
-
+  // Services
+  const sh2 = document.querySelector('#services h2');
+  if (sh2) sh2.textContent = map.services_h2;
   const cards = document.querySelectorAll('#services .card');
   if (cards.length > 0) {
-    if (cards[0]) cards[0].textContent = map.service_1;
-    if (cards[1]) cards[1].textContent = map.service_2;
-    if (cards[2]) cards[2].textContent = map.service_3;
-    if (cards[3]) cards[3].textContent = map.service_4;
-    if (cards[4]) cards[4].textContent = map.service_5;
+    cards.forEach((card, i) => {
+      if (map[`service_${i+1}`]) card.textContent = map[`service_${i+1}`];
+    });
   }
 
-  // 4. Update Forms (Shared logic for Index and Reviews)
-  const nameInput = document.getElementById('name-input') || document.getElementById('review-name-input');
-  if (nameInput) nameInput.placeholder = map.form_name;
+  // ABOUT SECTION (Fixed)
+  const abH2 = document.querySelector('#about h2');
+  if (abH2) abH2.textContent = map.about_h2;
+  const abP = document.querySelector('#about p');
+  if (abP) abP.textContent = map.about_p;
 
-  const emailInput = document.getElementById('email-input') || document.getElementById('review-email-input');
-  if (emailInput) emailInput.placeholder = map.form_email;
+  // CONTACT SECTION (Fixed)
+  const coH2 = document.querySelector('#contact h2');
+  if (coH2) coH2.textContent = map.contact_h2;
+  const coP = document.querySelector('#contact p');
+  if (coP) coP.innerHTML = map.contact_p;
 
-  const msgInput = document.getElementById('message-textarea') || document.getElementById('review-text-input');
-  if (msgInput) msgInput.placeholder = map.form_message;
+  // Forms
+  const nameIn = document.getElementById('name-input') || document.getElementById('review-name-input');
+  if (nameIn) nameIn.placeholder = map.form_name;
+  const emailIn = document.getElementById('email-input') || document.getElementById('review-email-input');
+  if (emailIn) emailIn.placeholder = map.form_email;
+  const msgIn = document.getElementById('message-textarea') || document.getElementById('review-text-input');
+  if (msgIn) msgIn.placeholder = map.form_message;
+  const subBtn = document.getElementById('submit-button') || document.getElementById('review-submit-btn');
+  if (subBtn) subBtn.textContent = map.form_button;
 
-  const submitBtn = document.getElementById('submit-button') || document.getElementById('review-submit-btn');
-  if (submitBtn) submitBtn.textContent = map.form_button;
+  // Footer
+  const foot = document.querySelector('footer p');
+  if (foot) foot.innerHTML = map.footer;
 
-  // 5. Update Footer
-  const footerP = document.querySelector('footer p');
-  if (footerP) footerP.innerHTML = map.footer;
-
-  // 6. Handle visibility for manual bilingual classes
+  // Bilingual Class Toggles
   document.querySelectorAll('.en-only').forEach(el => el.style.display = (currentLang === 'en' ? '' : 'none'));
   document.querySelectorAll('.gd-only').forEach(el => el.style.display = (currentLang === 'gd' ? '' : 'none'));
 }
