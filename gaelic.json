@@ -23,5 +23,12 @@
   "form_email": "Do Phost-d",
   "form_message": "Do Theachdaireachd",
   "form_button": "Cuir",
+  "form_review_button": "Cuir a-steach do Lèirmheas",
+  "rating_select": "— Tagh —",
+  "rating_5": "⭐⭐⭐⭐⭐ (Sgoinneil)",
+  "rating_4": "⭐⭐⭐⭐ (Glè Mhath)",
+  "rating_3": "⭐⭐⭐ (Math)",
+  "rating_2": "⭐⭐ (Meadhanach)",
+  "rating_1": "⭐ (Dona)",
   "footer": "© 2025 IÓR Gàrradh Cobhair – Gach còir glèidhte."
 }
