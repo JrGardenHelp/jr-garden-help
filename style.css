@@ -1,162 +1,142 @@
-/* Reset */
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: Arial, sans-serif; line-height:1.6; color:#333; }
+/* =========================================
+   1. RESET & BASE STYLES
+   ========================================= */
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
 
-/* Layout */
-header { background:#1a5f1a; color:white; padding:1rem; display:flex; justify-content:space-between; align-items:center; }
-header .logo { font-size:1.5rem; font-weight:bold; }
-nav a { color:white; margin:0 1rem; text-decoration:none; }
-#lang-toggle { background:#ffeb3b; color:#1a5f1a; border:none; padding:0.5rem 1rem; cursor:pointer; font-weight:bold; }
+body { 
+  font-family: Arial, sans-serif; 
+  line-height: 1.6; 
+  color: #333; 
+  background-color: #fff;
+}
 
-#hero { background:#2e7d32; color:white; text-align:center; padding:4rem 1rem; }
-#hero h1 { font-size:2.5rem; margin-bottom:1rem; }
-.btn { background:#ffeb3b; color:#1a5f1a; padding:0.75rem 1.5rem; text-decoration:none; border-radius:5px; display:inline-block; margin-top:1rem; }
+/* =========================================
+   2. HEADER & NAVIGATION
+   ========================================= */
+header { 
+  background: #1a5f1a; 
+  color: white; 
+  padding: 1rem; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+}
 
-section { padding:3rem 1rem; }
-h2 { margin-bottom:1.5rem; text-align:center; }
-.grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:1rem; }
-.card { background:#e8f5e9; padding:1.5rem; text-align:center; border-radius:8px; }
+header .logo { 
+  font-size: 1.5rem; 
+  font-weight: bold; 
+}
 
-form { max-width:500px; margin:2rem auto; display:flex; flex-direction:column; gap:1rem; }
-form input, form textarea { padding:0.75rem; border:1px solid #ccc; border-radius:4px; }
-form button { background:#1a5f1a; color:white; padding:0.75rem; border:none; cursor:pointer; }
+nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
-footer { background:#1a5f1a; color:white; text-align:center; padding:1.5rem; }
+nav a { 
+  color: white; 
+  margin: 0 1rem; 
+  text-decoration: none; 
+  display: inline-block;
+  white-space: nowrap;
+}
 
-/* Hero logo styling */
+nav a:first-child, nav a[href="reviews.html"] {
+  font-weight: bold;
+  color: #ffeb3b; /* Yellow accent */
+}
+
+/* =========================================
+   3. HERO SECTION
+   ========================================= */
+#hero { 
+  background: #2e7d32; 
+  color: white; 
+  text-align: center; 
+  padding: 4rem 1rem; 
+}
+
+#hero h1 { 
+  font-size: 2.5rem; 
+  margin-bottom: 1rem; 
+}
+
 #hero-logo {
   display: block;
-  max-width: 350px;               /* maximum size – change as needed */
-  width: 80%;                     /* makes it responsive on mobile */
+  max-width: 350px;
+  width: 80%;
   height: auto;
-  margin: 2rem auto 1rem auto;    /* space above/below */
-  border-radius: 12px;            /* optional: soft corners */
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* optional: nice shadow */
-}
-
-/* Reviews page styles */
-#reviews-hero {
-  background: #2e7d32;
-  color: white;
-  text-align: center;
-  padding: 4rem 1rem;
-}
-
-#reviews-hero h1 {
-  font-size: 2.8rem;
-  margin-bottom: 1rem;
-}
-
-.reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  padding: 3rem 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  min-height: 200px; /* keeps layout stable when empty */
-}
-
-.review-cta {
-  text-align: center;
-  padding: 3rem 1rem;
-  background: #f5f5f5;
-}
-
-.review-cta a {
-  color: #1a5f1a;
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-/* Review submission form */
-.review-submit {
-  max-width: 700px;
-  margin: 3rem auto;
-  padding: 2rem;
-  background: #f8f9fa;
+  margin: 2rem auto 1rem auto;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
-.review-submit h2 {
-  margin-bottom: 1.5rem;
+.hero-btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
-.review-submit input,
-.review-submit textarea,
-.review-submit select {
-  width: 100%;
-  padding: 0.8rem;
-  margin: 0.8rem 0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
+.btn { 
+  background: #ffeb3b; 
+  color: #1a5f1a; 
+  padding: 0.75rem 1.5rem; 
+  text-decoration: none; 
+  border-radius: 5px; 
+  display: inline-block; 
+  margin-top: 1rem; 
+  font-weight: bold;
 }
 
-.rating-group {
-  margin: 1rem 0;
-  text-align: left;
-}
-
-.review-submit button {
-  background: #1a5f1a;
-  color: white;
-  padding: 0.9rem 2rem;
-  border: none;
-  border-radius: 6px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  margin-top: 1rem;
-}
-
-.review-submit button:hover {
-  background: #145214;
-}
 .reviews-btn {
-  background: #ff9800;           /* orange to contrast with yellow quote button */
+  background: #ff9800;
   color: white;
-  margin-top: 1rem;
 }
 
 .reviews-btn:hover {
   background: #f57c00;
 }
-nav a[href="reviews.html"] {
-  color: #ffeb3b; /* yellow to stand out */
-  font-weight: bold;
-}
-.hero-btn-group {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;           /* space if you ever add more buttons */
-  flex-wrap: wrap;
+
+/* =========================================
+   4. SERVICES & CONTENT SECTIONS
+   ========================================= */
+section { 
+  padding: 3rem 1rem; 
 }
 
-.hero-btn-group .btn {
-  padding: 0.9rem 1.8rem; /* tighter horizontal padding */
-  white-space: nowrap;    /* keeps text on one line */
+h2 { 
+  margin-bottom: 1.5rem; 
+  text-align: center; 
 }
-nav a:first-child {
-  font-weight: bold;
-  color: #ffeb3b; /* yellow to match your accent color */
+
+.grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+  gap: 1rem; 
 }
-/* Before & After section */
+
+.card { 
+  background: #e8f5e9; 
+  padding: 1.5rem; 
+  text-align: center; 
+  border-radius: 8px; 
+}
+
+/* Before & After */
 #before-after {
   text-align: center;
   padding: 3rem 1rem;
   background: #f8f9fa;
 }
 
-#before-after h2 {
-  color: #1a5f1a;
-  margin-bottom: 1rem;
-}
-
 .ba-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -199,81 +179,105 @@ nav a:first-child {
   font-weight: bold;
 }
 
-/* Custom file upload */
-.custom-file-upload {
+/* =========================================
+   5. REVIEWS PAGE SPECIFIC
+   ========================================= */
+#reviews-hero {
+  background: #2e7d32;
+  color: white;
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 3rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.review-submit {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.rating-group {
   margin: 1rem 0;
+  text-align: left;
 }
 
-.upload-btn {
-  background: #ff9800;
-  color: white;
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+.review-cta {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: #f5f5f5;
+}
+
+/* =========================================
+   6. FORMS & FOOTER
+   ========================================= */
+form { 
+  max-width: 500px; 
+  margin: 2rem auto; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 1rem; 
+}
+
+form input, form textarea, form select { 
+  padding: 0.75rem; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
   font-size: 1rem;
-  margin-right: 1rem;
+  width: 100%;
 }
 
-.upload-btn:hover {
-  background: #f57c00;
-}
-
-.file-name {
-  font-style: italic;
-  color: #555;
-}
-
-.custom-file-upload button {
-  background: #ff9800;
-  color: white;
-  padding: 0.8rem 1.5rem;
-  border: none;
+form button { 
+  background: #1a5f1a; 
+  color: white; 
+  padding: 0.75rem; 
+  border: none; 
+  cursor: pointer; 
+  font-size: 1.1rem;
   border-radius: 6px;
-  cursor: pointer;
-  font-size: 1rem;
-  margin-right: 1rem;
 }
 
-.custom-file-upload button:hover {
-  background: #f57c00;
+footer { 
+  background: #1a5f1a; 
+  color: white; 
+  text-align: center; 
+  padding: 1.5rem; 
 }
 
-.custom-file-upload .file-name {
-  font-style: italic;
-  color: #555;
+/* =========================================
+   7. LANGUAGE LOGIC & TOGGLE
+   ========================================= */
+#lang-toggle { 
+  background-color: #ffcc00; 
+  color: #333; 
+  border: none; 
+  padding: 8px 15px; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  font-weight: bold; 
 }
 
-/* Language Toggle Logic */
+#lang-toggle:hover { 
+  background-color: #e6b800; 
+}
 
-/* 1. When the page is in English (lang="en") */
+/* Hide Gaelic when in English */
 html[lang="en"] .gd-only {
   display: none !important;
 }
-html[lang="en"] .en-only {
-  display: block; /* or inline-block/flex depending on your layout */
-}
 
-/* 2. When the page is in Gaelic (lang="gd") */
+/* Hide English when in Gaelic */
 html[lang="gd"] .en-only {
   display: none !important;
-}
-html[lang="gd"] .gd-only {
-  display: block;
-}
-
-/* Ensure the language toggle button stands out */
-#lang-toggle {
-  background-color: #ffcc00;
-  color: #333;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  font-family: inherit;
-}
-
-#lang-toggle:hover {
-  background-color: #e6b800;
 }
