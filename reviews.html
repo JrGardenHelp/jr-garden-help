@@ -3,46 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Reviews | JR Garden Help – Gardening Services in Dumbarton</title>
+  <title>Reviews | JR Garden Help</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="data:,">
 </head>
 <body>
   <header>
-    <div class="logo">JR Garden Help</div>
+    <div class="logo" id="site-logo">JR Garden Help</div>
     <nav>
-      <a href="index.html" class="nav-link-home">Home</a>
-      <a href="index.html#services">Services</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#contact">Contact</a>
+      <a href="index.html" id="nav-home">Home</a>
+      <a href="index.html#services" id="nav-services">Services</a>
+      <a href="index.html#about" id="nav-about">About</a>
+      <a href="index.html#contact" id="nav-contact">Contact</a>
       <button id="lang-toggle">Gàidhlig (Scottish Gaelic)</button>
     </nav>
   </header>
 
   <main>
     <section id="reviews-hero">
-      <h1 class="en-only">Reviews</h1>
-      <h1 class="gd-only" style="display:none;">Lèirmheasan</h1>
-
-      <p class="en-only">Read what my customers say about my gardening services in Dumbarton, West Dunbartonshire and beyond.</p>
-      <p class="gd-only" style="display:none;">Leugh na tha mo luchd-ceannach ag ràdh mun t-seirbheis gàrraidh agam ann an Dùn Breatann, Siorrachd Dhùn Breatann an Iar agus nas fhaide air falbh.</p>
+      <h1 id="rev-h1">Reviews</h1>
+      <p id="rev-p">Read what my customers say about my gardening services in Dumbarton, West Dunbartonshire and beyond.</p>
     </section>
 
-    <section class="reviews-grid">
-      </section>
-
     <section class="review-submit">
-      <h2 class="en-only">Submit Your Review</h2>
-      <h2 class="gd-only" style="display:none;">Cuir a-steach do Lèirmheas</h2>
-
+      <h2 id="rev-form-title">Submit Your Review</h2>
       <form action="https://formspree.io/f/mojjqlwk" method="POST">
         <input type="hidden" name="_next" id="redirect-url" value="https://jrgardenhelp.github.io/jr-garden-help/success.html?lang=en">
-
         <input type="text" id="review-name-input" name="name" placeholder="Your Name" required />
-
         <div class="rating-group">
-          <label class="en-only">Rating:</label>
-          <label class="gd-only" style="display:none;">Rangachadh:</label>
+          <label id="rating-label">Rating:</label>
           <select name="rating" required id="rating-dropdown">
             <option value="" id="opt-select">— Select —</option>
             <option value="5" id="opt-5">⭐⭐⭐⭐⭐ (Excellent)</option>
@@ -52,44 +40,16 @@
             <option value="1" id="opt-1">⭐ (Poor)</option>
           </select>
         </div>
-
         <textarea id="review-text-input" name="review" placeholder="Your Review / Feedback" rows="6" required></textarea>
-
         <input type="email" id="review-email-input" name="_replyto" placeholder="Your Email (optional)" />
-
-        <input type="text" name="_gotcha" style="display:none" />
-
         <button type="submit" id="review-submit-btn">Submit Review</button>
       </form>
-    </section>
-
-    <section class="review-cta">
-      <h2 class="en-only">Want to leave a review?</h2>
-      <h2 class="gd-only" style="display:none;">A bheil thu airson lèirmheas fhàgail?</h2>
-
-      <div class="en-only">
-        <p>I'd love to hear your feedback! Please leave a review here or on my Google Business Profile.</p>
-        <a href="https://g.page/your-google-business-link/review" target="_blank" rel="noopener noreferrer">Google Business Profile</a>
-      </div>
-      
-      <div class="gd-only" style="display:none;">
-        <p>Bu toil leam do bheachd fhaighinn! Feuch an cuir thu lèirmheas an seo no air mo Phròifil Gnìomhachais Google.</p>
-        <a href="https://g.page/your-google-business-link/review" target="_blank" rel="noopener noreferrer">Pròifil Gnìomhachais Google againn</a>
-      </div>
-
-      <p class="en-only" style="margin-top: 1.5rem;">
-        Reviews help local customers find reliable gardening services.
-      </p>
-      <p class="gd-only" style="display:none; margin-top: 1.5rem;">
-        Bidh lèirmheasan a’ cuideachadh luchd-ceannach ionadail seirbheisean gàrraidh earbsach a lorg.
-      </p>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 JR Garden Help – All rights reserved.</p>
+    <p id="footer-text">© 2025 JR Garden Help – All rights reserved.</p>
   </footer>
-
   <script src="script.js"></script>
 </body>
 </html>
