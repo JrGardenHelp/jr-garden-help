@@ -281,3 +281,13 @@ html[lang="en"] .gd-only {
 html[lang="gd"] .en-only {
   display: none !important;
 }
+
+.btn {
+  min-width: 150px; /* Ensures buttons never shrink too small */
+  text-align: center;
+}
+
+.ba-grid {
+  /* This ensures that on smaller screens, it shows 1 pair, and on larger screens, it shows up to 3 side-by-side */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
