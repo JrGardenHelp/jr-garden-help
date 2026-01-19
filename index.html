@@ -135,22 +135,28 @@
   </div>
 </section>
 
-  <section id="about">
+ <section id="about">
   <h2 id="about-title">About JR Garden Help</h2>
   <p id="about-description">Run by Jonathan Rainey since 2025. Based in Dumbarton, serving Dumbarton, West Dunbartonshire and neighbouring Council Areas.</p>
   <p id="about-sepa">I am also registered as a Professional Collector and Transporter of Waste with SEPA (Notification Reference: WCR/PC/5012123).</p>
 </section>
 
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <p>Email: jrgardenhelp@gmx.com<br>Phone: 07462 167433</p>
-    <form action="https://formspree.io/f/mreeznbo" method="POST">
-      <input type="text" id="name-input" name="name" placeholder="Your Name" required />
-      <input type="email" id="email-input" name="_replyto" placeholder="Your Email" required />
-      <textarea id="message-textarea" name="message" placeholder="Your Message" required></textarea>
-      <button type="submit" id="submit-button">Send</button>
-    </form>
-  </section>
+<section id="contact">
+  <h2 id="contact-title">Contact Me</h2>
+  <p id="contact-info">Email: jrgardenhelp@gmx.com<br>Phone: 07462 167433</p>
+
+  <form action="https://formspree.io/f/mreeznbo" method="POST">
+    <input type="hidden" name="_next" id="redirect-url" value="https://jrgardenhelp.github.io/jr-garden-help/success.html?lang=en">
+    
+    <input type="text" id="name-input" name="name" placeholder="Your Name" required />
+    <input type="email" id="email-input" name="_replyto" placeholder="Your Email" required />
+    <textarea id="message-textarea" name="message" placeholder="Your Message" rows="5" required></textarea>
+    
+    <input type="text" name="_gotcha" style="display:none" />
+    
+    <button type="submit" id="submit-button">Send</button>
+  </form>
+</section>
 
   <footer>
     <p>© 2025 JR Garden Help – All rights reserved.</p>
