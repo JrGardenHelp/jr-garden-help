@@ -243,3 +243,37 @@ nav a:first-child {
   font-style: italic;
   color: #555;
 }
+
+/* Language Toggle Logic */
+
+/* 1. When the page is in English (lang="en") */
+html[lang="en"] .gd-only {
+  display: none !important;
+}
+html[lang="en"] .en-only {
+  display: block; /* or inline-block/flex depending on your layout */
+}
+
+/* 2. When the page is in Gaelic (lang="gd") */
+html[lang="gd"] .en-only {
+  display: none !important;
+}
+html[lang="gd"] .gd-only {
+  display: block;
+}
+
+/* Ensure the language toggle button stands out */
+#lang-toggle {
+  background-color: #ffcc00;
+  color: #333;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: inherit;
+}
+
+#lang-toggle:hover {
+  background-color: #e6b800;
+}
