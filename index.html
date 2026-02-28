@@ -115,14 +115,58 @@
   <section id="contact">
     <h2 id="contact-title">Contact Me</h2>
     <p id="contact-info">Email: jrgardenhelp@gmx.com<br>Phone: 07462 167433</p>
-    <form action="https://formspree.io/f/mreeznbo" method="POST">
-      <input type="hidden" name="_next" id="redirect-url" value="https://jrgardenhelp.github.io/jr-garden-help/success.html?lang=en">
-      <input type="text" id="name-input" name="name" placeholder="Your Name" required />
-      <input type="email" id="email-input" name="_replyto" placeholder="Your Email" required />
-      <textarea id="message-textarea" name="message" placeholder="Your Message" rows="5" required></textarea>
-      <input type="text" name="_gotcha" style="display:none" />
-      <button type="submit" id="submit-button">Send</button>
-    </form>
+    <form action="https://formspree.io/f/mreeznbo" method="POST" id="contact-form">
+    <div class="form-group">
+        <label for="full-name">Full Name / Ainm Slàn</label>
+        <input type="text" id="full-name" name="name" placeholder="E.g. John Ross" required>
+    </div>
+
+    <div class="form-group">
+        <label for="email">E-mail Address / Seòladh Post-d</label>
+        <input type="email" id="email" name="email" placeholder="example@email.com" required>
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Phone Number / Àireamh Fòn</label>
+        <input type="tel" id="phone" name="phone" placeholder="07123 456789" required>
+    </div>
+
+    <hr> <div class="form-group">
+        <label for="house-number">House or Flat Number / Àireamh Taighe no Àrasain</label>
+        <input type="text" id="house-number" name="house_number" required>
+    </div>
+
+    <div class="form-group">
+        <label for="street">Street / Sràid</label>
+        <input type="text" id="street" name="street" required>
+    </div>
+
+    <div class="form-group">
+        <label for="locality">Hamlet, Village, Town or City / Clachan, Baile beag, Baile no Cathair</label>
+        <input type="text" id="locality" name="locality" required>
+    </div>
+
+    <div class="form-group">
+        <label for="council">Council Area / Sgìre na Comhairle</label>
+        <input type="text" id="council" name="council" placeholder="e.g. West Dunbartonshire" required>
+    </div>
+
+    <div class="form-group">
+        <label for="postcode">Postcode / Còd-puist</label>
+        <input type="text" id="postcode" name="postcode" required>
+    </div>
+
+    <hr>
+
+    <div class="form-group">
+        <label for="message">Your Message / Do Theachdaireachd</label>
+        <textarea id="message" name="message" rows="5" placeholder="Tell me about your garden..." required></textarea>
+    </div>
+
+    <input type="hidden" name="_next" value="https://jrgardenhelp.scot/success.html">
+
+    <button type="submit" class="btn-submit">Send / Cuir</button>
+</form>
   </section>
 
   <footer>
